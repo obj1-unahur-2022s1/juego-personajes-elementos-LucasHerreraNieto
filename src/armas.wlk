@@ -1,0 +1,7 @@
+object ballesta {
+	
+	
+}
+object jabalina{
+	
+}
