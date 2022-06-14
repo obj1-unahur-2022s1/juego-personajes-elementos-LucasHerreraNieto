@@ -1,0 +1,88 @@
+import elementos.*
+import armas.*
+import jugadoresPersonajes.*
+
+describe "primer parte del test "{
+	
+	method initialize(){
+		luisa.elegirPersonaje(mario);
+		luisa.aparecer(aurora);
+		luisa.aparecer(castillo);
+	}
+	
+	test"valor total de mario"{
+		assert.equals(45,mario.valorRecolectado())
+	}
+	test "mario es feliz"{
+		assert.that(mario.esFeliz())
+	}
+	test "castillo tiene 170 de defensa"{
+		assert.equals(170,castillo.nivelDefensa())
+	}
+}
+
+describe "segunda parte del test"{
+	
+	method initialize(){
+		floki.arma(jabalina)
+		luisa.elegirPersonaje(mario);
+		luisa.aparecer(tipa)
+		luisa.elegirPersonaje(floki);
+		luisa.aparecer(aurora);
+		luisa.aparecer(castillo);
+	}
+	
+	test "valor recolectado por mario"{
+		assert.equals(16,mario.valorRecolectado())
+	}
+	
+	test "altura de tipa es 16"{
+		assert.equals(9,tipa.altura())
+	}
+	
+	test "mario no esta feliz"{
+		assert.notThat(mario.esFeliz())
+	}
+	
+	test "aurora esta muerta"{
+		assert.notThat(aurora.estaViva())
+	}
+	
+	test "la defensa del castillo es 150"{
+		assert.equals(150,castillo.nivelDefensa())
+	}
+	
+	test "jabalina no esta cargada"{
+		assert.notThat(jabalina.estaCargada())
+	}
+}
+
+describe "tercera parte del test "{
+	
+	method initialize(){
+		floki.arma(ballesta)
+		luisa.elegirPersonaje(floki)
+		luisa.aparecer(aurora)
+		luisa.aparecer(castillo)
+	}
+	
+	test"valor recolectado por mario es 0"{
+		assert.equals(0,mario.valorRecolectado())
+	}
+	
+	test "aurora esta viva"{
+		assert.that(aurora.estaViva())
+	}
+	
+	test "la defensa del castillo es 146"{
+		assert.equals(146,castillo.nivelDefensa())
+	}
+	
+	test "la ballesta esta cargada"{
+		assert.that(ballesta.estaCargada())
+	}
+	
+	test "quedan 8 flechas en la ballesta"{
+		assert.equals(8,ballesta.flechas())
+	}
+}
